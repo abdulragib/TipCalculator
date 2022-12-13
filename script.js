@@ -50,11 +50,10 @@ const calculateBill = () => {
   // calculate the per person total (total divided by number of people)
   let persons=Number(numberOfPerson.innerText)
   let totalPerAmount=totalAmount / persons
-  let roundFigure=Math.ceil(totalPerAmount,2)
 
 
   // update the perPersonTotal on DOM & show it to user
-   perPersonTotal.innerText=`$${roundFigure}`
+   perPersonTotal.innerText=`$${totalPerAmount.toFixed(2)}`
 }
 
 // ** Splits the bill between more people **
