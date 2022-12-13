@@ -50,10 +50,14 @@ const calculateBill = () => {
   // calculate the per person total (total divided by number of people)
   let persons=Number(numberOfPerson.innerText)
   let totalPerAmount=totalAmount / persons
+  //limit to 2 floating point in decimal
+  let fixedDecimalAmount=totalPerAmount.toFixed(2)
 
+  //put comma in decimal
+  let CommaInDecimal=totalPerAmount.toLocaleString('en-US')
 
   // update the perPersonTotal on DOM & show it to user
-   perPersonTotal.innerText=`$${totalPerAmount.toFixed(2)}`
+   perPersonTotal.innerText=`$${fixedDecimalAmount}`
 }
 
 // ** Splits the bill between more people **
@@ -78,6 +82,7 @@ const decreasePeople = () => {
   // (a.k.a you can't decrease the number of people to 0 or negative!)
   if(numberOfPerson.innerText == '1' || numberOfPerson.innerText < '1')
   {
+    throw 'you cannot have less than 1 person'
     return 
   }
 
